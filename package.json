@@ -1,0 +1,32 @@
+{
+  "name": "administrare",
+  "version": "1.0.0",
+  "description": "prof of concept for a SPA and  nodejs RESTful api ",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theodorabesoiu/administrare_locuri_de_parcare_google.git"
+  },
+  "keywords": [
+    "RESTful",
+    "api",
+    "nodejs",
+    "product",
+    "catalog"
+  ],
+  "author": "Theodora Besoiu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/theodorabesoiu/administrare_locuri_de_parcare_google/issues"
+  },
+  "homepage": "https://github.com/theodorabesoiu/administrare_locuri_de_parcare_google#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mysql2": "^1.4.2",
+    "nodeadmin": "^0.1.2",
+    "sequelize": "^4.22.5"
+  }
+}
