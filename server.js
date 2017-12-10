@@ -23,6 +23,7 @@ var Products = sequelize.define('products', {
     category_id: Sequelize.INTEGER,
     adress: Sequelize.STRING,
     price: Sequelize.INTEGER,
+    reserved: Sequelize.INTEGER,
 
 })
 

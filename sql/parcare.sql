@@ -9,7 +9,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 --
 -- Database: `locuriParcare`
 --
-CREATE DATABASE `catalog` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
+CREATE DATABASE `disponibilitate` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `catalog`;
 
 -- --------------------------------------------------------
@@ -40,6 +40,7 @@ CREATE TABLE IF NOT EXISTS `products` (
   `owner` varchar(30) DEFAULT NULL,
   `adress` varchar(100) DEFAULT NULL,
   `price` int(11) NOT NULL,
+  `reserved` int(2) NOT NULL,
   `createdAt` timestamp,
   `updatedAt` timestamp,
   PRIMARY KEY (`id`),
