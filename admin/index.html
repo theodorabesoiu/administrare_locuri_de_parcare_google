@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Catalog Admin</title>
+    <title>Locuri de Parcare Admin</title>
     
     <!-- Jquery JS file -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -16,6 +16,7 @@
     
     <!-- Custom JS file -->
     <script type="text/javascript" src="js/script.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
 </head>
 <body>
 
@@ -23,16 +24,85 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h1>Product Catalog Admin</h1>
+            <h1>Administrare locuri de parcare</h1>
         </div>
     </div>
     <ul class="nav nav-tabs">
       <li role="presentation" class="active"><a href="/admin/">Home</a></li>
       <li role="presentation"><a href="categories.html">Categorii</a></li>
-      <li role="presentation"><a href="products.html">Produse</a></li>
+      <li role="presentation"><a href="products.html">Locuri de parcare</a></li>
+       
     </ul>
     <br/>
 </div>
+<div id="map" style="width:400px;height:400px">
 <!-- /Content Section -->
+    <script type="text/javascript"> function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: new google.maps.LatLng(-33.863276, 151.207977),
+          zoom: 12
+        });
+        var infoWindow = new google.maps.InfoWindow;
+
+          // Change this depending on the name of your PHP or XML file
+          downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
+            var xml = data.responseXML;
+            var markers = xml.documentElement.getElementsByTagName('marker');
+            Array.prototype.forEach.call(markers, function(markerElem) {
+              var id = markerElem.getAttribute('id');
+    var categorieId=markerElem.getAttribute('categorieId')
+    var owner = markerElem.getAttribute('owner');
+    var adress = markerElem.getAttribute('adress');
+    var price=markerElem.getAttribute('price');
+    var reserved = markerElem.getAttribute('reserved');
+    var point = new google.maps.LatLng(
+        parseFloat(markerElem.getAttribute('latitudine')),
+        parseFloat(markerElem.getAttribute('longitudine')));
+
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = name
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+
+              var text = document.createElement('text');
+              text.textContent = address
+              infowincontent.appendChild(text);
+              var icon = customLabel[type] || {};
+              var marker = new google.maps.Marker({
+                map: map,
+                position: point,
+                label: icon.label
+              });
+              marker.addListener('click', function() {
+                infoWindow.setContent(infowincontent);
+                infoWindow.open(map, marker);
+              });
+            });
+          });
+        }
+
+
+
+      function downloadUrl(url, callback) {
+        var request = window.ActiveXObject ?
+            new ActiveXObject('Microsoft.XMLHTTP') :
+            new XMLHttpRequest;
+
+        request.onreadystatechange = function() {
+          if (request.readyState == 4) {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+          }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+      }
+
+      function doNothing() {}</script>>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDySAxPKJetvyIcvLy96P4irPCiiRKUZ3U	&callback=initMap">
+    </script>
 </body>
 </html>

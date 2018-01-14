@@ -45,7 +45,7 @@ function viewRecord(id) {
     $.get(url, {}, function (data, status) {
         //bind the values to the form fields
         $('#category_id').val(data.category_id);
-        $('#name').val(data.name);
+        $('#owner').val(data.owner);
         $('#description').val(data.description);
         $('#id').val(id);
         $('#myModalLabel').html('Edit Product');

@@ -3,7 +3,7 @@ var Sequelize = require("sequelize")
 var nodeadmin = require("nodeadmin")
 
 //connect to mysql database
-var sequelize = new Sequelize('catalog', 'root', '', {
+var sequelize = new Sequelize('locuriParcare', 'root', '', {
     dialect:'mysql',
     host:'localhost'
 })
@@ -24,7 +24,8 @@ var Products = sequelize.define('products', {
     adress: Sequelize.STRING,
     price: Sequelize.INTEGER,
     reserved: Sequelize.INTEGER,
-
+    latitudine:Sequelize.INTEGER,
+    longitudine: Sequelize.INTEGER
 })
 
 Products.belongsTo(Categories, {foreignKey: 'category_id', targetKey: 'id'})
