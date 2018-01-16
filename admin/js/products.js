@@ -20,8 +20,12 @@ function readRecords() {
 function displayColumns(value) {
     return 	'<td>'+value.id+'</td>'
             + '<td class="category_id">'+value.category.name+'</td>'
-            + '<td class="name">'+value.name+'</td>'
-			+ '<td class="description">'+value.description+'</td>'
+            + '<td class="owner">'+value.owner+'</td>'
+			+ '<td class="adress">'+value.adress+'</td>'
+			+ '<td class="price">'+value.price+'</td>'
+			+ '<td class="reserved">'+value.reserved+'</td>'
+			+ '<td class="latitudine">'+value.latitudine+'</td>'
+			+ '<td class="longitudine">'+value.longitudine+'</td>'
 			+ '<td align="center">'
 			+	'<button onclick="viewRecord('+ value.id +')" class="btn btn-edit">Update</button>'
 			+ '</td>'
@@ -33,9 +37,12 @@ function displayColumns(value) {
 function addRecord() {
     $('#id').val('');
     $('#category_id').val('');
-    $('#name').val('');
-    $('#description').val('');
-    
+    $('#owner').val('');
+    $('#adress').val('');
+    $('#price').val('');
+    $('#reserved').val('');
+    $('#latitudine').val('');
+    $('#longitudine').val('');
     $('#myModalLabel').html('Add New Product');
 }
 
@@ -46,7 +53,11 @@ function viewRecord(id) {
         //bind the values to the form fields
         $('#category_id').val(data.category_id);
         $('#owner').val(data.owner);
-        $('#description').val(data.description);
+        $('#adress').val(data.adress);
+        $('#price').val(data.price);
+        $('#reserved').val(data.reserved);
+        $('#latitudine').val(data.latitudine);
+        $('#longitudine').val(data.longitudine);
         $('#id').val(id);
         $('#myModalLabel').html('Edit Product');
         
@@ -95,8 +106,12 @@ function updateRecord(formData) {
         data: formData,
         success: function(data) {
             $('#row_id_'+formData.id+'>td.category_id').html(formData.category_id);
-            $('#row_id_'+formData.id+'>td.name').html(formData.name);
-            $('#row_id_'+formData.id+'>td.description').html(formData.description);
+            $('#row_id_'+formData.id+'>td.owner').html(formData.name);
+            $('#row_id_'+formData.id+'>td.adress').html(formData.description);
+            $('#row_id_'+formData.id+'>td.price').html(formData.name);
+            $('#row_id_'+formData.id+'>td.reserved').html(formData.name);
+            $('#row_id_'+formData.id+'>td.longitudine').html(formData.name);
+            $('#row_id_'+formData.id+'>td.latitudine').html(formData.name);
             $('#add_new_record_modal').modal('hide');
         } 
     });
